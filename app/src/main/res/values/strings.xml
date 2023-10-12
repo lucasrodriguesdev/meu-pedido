@@ -6,4 +6,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="meu_pedido_app">Meu Pedido App</string>
+    <string name="cadastrar_cliente">Cadastrar Cliente</string>
+    <string name="cadastrar_produto">Cadastrar Produto</string>
+    <string name="cliente">Cliente</string>
+    <string name="produto">Produto</string>
+    <string name="cadastrar">Cadastrar</string>
 </resources>

@@ -20,6 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
+            style="@style/Widget.MaterialComponents.AppBarLayout.Primary"
+            app:titleTextColor="@color/white"
             app:title="@string/meu_pedido_app" />
 
     </com.google.android.material.appbar.AppBarLayout>
