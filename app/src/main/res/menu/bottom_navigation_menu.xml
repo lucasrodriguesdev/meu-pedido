@@ -1,17 +1,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/homeFragment"
+        android:id="@+id/productsFragment"
         android:enabled="true"
-        android:icon="@drawable/ic_home"
-        android:title="@string/inicio"/>
+        android:icon="@drawable/ic_product"
+        android:title="@string/produtos"/>
     <item
         android:id="@+id/orderFragment"
         android:enabled="true"
         android:icon="@drawable/ic_carrinho"
         android:title="@string/pedidos"/>
     <item
-        android:id="@+id/aboutFragment"
+        android:id="@+id/customersFragment"
         android:enabled="true"
-        android:icon="@drawable/ic_pedido"
-        android:title="@string/sobre"/>
+        android:icon="@drawable/ic_customer"
+        android:title="@string/clientes"/>
 </menu>

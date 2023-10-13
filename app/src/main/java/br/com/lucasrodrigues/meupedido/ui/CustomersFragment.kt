@@ -6,16 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import br.com.lucasrodrigues.meupedido.R
-import br.com.lucasrodrigues.meupedido.databinding.FragmentHomeBinding
+import br.com.lucasrodrigues.meupedido.databinding.FragmentCustomersBinding
 
-class HomeFragment : Fragment() {
 
-    private lateinit var binding: FragmentHomeBinding
+class CustomersFragment : Fragment() {
+
+    private lateinit var binding: FragmentCustomersBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+        binding = FragmentCustomersBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
