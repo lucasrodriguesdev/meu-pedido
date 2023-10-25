@@ -10,12 +10,15 @@ import androidx.navigation.ui.setupWithNavController
 import br.com.lucasrodrigues.meupedido.R
 import br.com.lucasrodrigues.meupedido.databinding.ActivityMainBinding
 import br.com.lucasrodrigues.meupedido.ui.viewmodels.ProductsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navHostFragment: NavController
-    val viewModel: ProductsViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)

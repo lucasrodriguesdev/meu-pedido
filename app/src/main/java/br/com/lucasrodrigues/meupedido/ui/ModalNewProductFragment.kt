@@ -12,11 +12,14 @@ import br.com.lucasrodrigues.meupedido.data.models.Product
 import br.com.lucasrodrigues.meupedido.databinding.FragmentModalNewProductBinding
 import br.com.lucasrodrigues.meupedido.ui.viewmodels.ProductsViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ModalNewProductFragment : BottomSheetDialogFragment() {
 
-    lateinit var binding: FragmentModalNewProductBinding
-    val viewModel: ProductsViewModel by activityViewModels()
+    private lateinit var binding: FragmentModalNewProductBinding
+    private val viewModel: ProductsViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,12 +27,13 @@ class ModalNewProductFragment : BottomSheetDialogFragment() {
         binding = FragmentModalNewProductBinding.inflate(layoutInflater,container, false)
 
         binding.btnSaveProduct.setOnClickListener {
+
             val product = Product(
-                viewModel.getLastProductId()?.plus(1),
                 binding.tvProductName.editText?.text.toString(),
                 binding.tvProductDescription.editText?.text.toString()
             )
-            viewModel.addNewProductToList(product)
+//            viewModel.addNewProductToList(product)
+            viewModel.insertProduct(product)
             dismiss()
         }
 
