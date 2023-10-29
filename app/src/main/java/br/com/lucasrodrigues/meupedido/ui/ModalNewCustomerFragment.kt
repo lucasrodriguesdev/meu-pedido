@@ -1,25 +1,36 @@
 package br.com.lucasrodrigues.meupedido.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import br.com.lucasrodrigues.meupedido.R
+import androidx.fragment.app.viewModels
+import br.com.lucasrodrigues.meupedido.data.models.Customer
 import br.com.lucasrodrigues.meupedido.databinding.FragmentModalNewCustomerBinding
-import br.com.lucasrodrigues.meupedido.databinding.FragmentModalNewProductBinding
+import br.com.lucasrodrigues.meupedido.ui.viewmodels.CustomersViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ModalNewCustomerFragment : BottomSheetDialogFragment() {
 
-    lateinit var binding: FragmentModalNewCustomerBinding
+    private lateinit var binding: FragmentModalNewCustomerBinding
+    private val viewModel: CustomersViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentModalNewCustomerBinding.inflate(layoutInflater,container, false)
-        binding.btnSaveProduct.setOnClickListener {
+
+        binding.btnSaveCustomer.setOnClickListener {
+            val customer = Customer(
+                binding.tvCustomerName.editText?.text.toString(),
+                binding.tvCustomerEmail.editText?.text.toString()
+            )
+            viewModel.insertCustomer(customer)
             dismiss()
+
         }
         return binding.root
     }

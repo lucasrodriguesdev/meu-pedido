@@ -12,5 +12,4 @@ class ProductRepository @Inject constructor(
 
     fun getAllProducts() = productDAO.getAllProducts()
 
-
 }

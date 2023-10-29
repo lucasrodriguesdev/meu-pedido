@@ -5,14 +5,14 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import br.com.lucasrodrigues.meupedido.data.models.Product
+import br.com.lucasrodrigues.meupedido.data.models.Customer
 
 @Dao
-interface ProductDAO {
+interface CustomerDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertProduct(product: Product)
+    suspend fun insertCustomer(customer: Customer)
 
-    @Query("SELECT * FROM products_table")
-    fun getAllProducts(): LiveData<List<Product>>
+    @Query("SELECT * FROM customers_table")
+    fun getAllCustomers(): LiveData<List<Customer>>
 }

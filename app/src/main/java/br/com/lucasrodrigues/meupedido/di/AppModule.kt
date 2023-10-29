@@ -26,4 +26,6 @@ object AppModule {
     fun provideProductDao(db: OrdersDatabase) = db.getProductDao()
 
 
+    @Provides
+    fun provideCustomerDao(db: OrdersDatabase) = db.getCustomerDao()
 }
