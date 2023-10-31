@@ -15,7 +15,14 @@ class OrdersFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentOrdersBinding.inflate(layoutInflater, container, false)
+
+        configWidgets()
         return binding.root
     }
 
+    private fun configWidgets(){
+        binding.floatingActionButton.setOnClickListener {
+            throw RuntimeException("Test Crash")
+        }
+    }
 }
