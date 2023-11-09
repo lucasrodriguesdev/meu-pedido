@@ -15,26 +15,10 @@ class ProductsViewModel @Inject constructor(
     private val repository: ProductRepository
 ) : ViewModel(){
 
-    private val _listOfProducts = MutableLiveData<MutableList<Product>>()
-    val listOfProducts: LiveData<MutableList<Product>>
-        get() = _listOfProducts
+    var products = repository.getAllProducts()
 
     fun insertProduct(product: Product) = viewModelScope.launch {
         repository.insertProduct(product)
     }
-
-
-
-    fun addNewProductToList(product: Product){
-        val currentList = _listOfProducts.value ?: mutableListOf()
-        currentList.add(product)
-        _listOfProducts.postValue(
-            currentList
-        )
-    }
-    fun getLastProductId(): Long?{
-        return if (_listOfProducts.value.isNullOrEmpty()) 0 else _listOfProducts.value?.last()?.id
-    }
-
 
 }
