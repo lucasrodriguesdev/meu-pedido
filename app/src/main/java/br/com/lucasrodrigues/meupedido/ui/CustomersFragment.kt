@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import br.com.lucasrodrigues.meupedido.R
 import br.com.lucasrodrigues.meupedido.adapters.CustomerAdapter
 import br.com.lucasrodrigues.meupedido.databinding.FragmentCustomersBinding
 import br.com.lucasrodrigues.meupedido.ui.viewmodels.CustomersViewModel
@@ -17,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class CustomersFragment : Fragment() {
 
     private lateinit var binding: FragmentCustomersBinding
-    private val modalNewCustomerFragment = ModalNewCustomerFragment()
+    private val newCustomerFragment = NewCustomerFragment()
 
     private val viewlModel: CustomersViewModel by viewModels()
 
@@ -32,15 +34,11 @@ class CustomersFragment : Fragment() {
         setupRecyclerView()
         setupObservers()
 
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         binding.fabNewCustomer.setOnClickListener {
-            modalNewCustomerFragment.show(parentFragmentManager, modalNewCustomerFragment.tag)
+            findNavController().navigate(R.id.action_customersFragment_to_modalNewCustomerFragment)
         }
+
+        return binding.root
     }
 
     private fun setupRecyclerView(){
@@ -49,9 +47,10 @@ class CustomersFragment : Fragment() {
     }
 
     private fun setupObservers(){
-        viewlModel.customers.observe(viewLifecycleOwner, Observer {
+        viewlModel.getAllCustomers().observe(viewLifecycleOwner, Observer {
             customerAdapter.updateDate(it)
         })
     }
+
 
 }

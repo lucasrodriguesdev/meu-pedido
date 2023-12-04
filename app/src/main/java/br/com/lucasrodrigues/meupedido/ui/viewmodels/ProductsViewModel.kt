@@ -15,7 +15,9 @@ class ProductsViewModel @Inject constructor(
     private val repository: ProductRepository
 ) : ViewModel(){
 
-    var products = repository.getAllProducts()
+    fun getAllProducts(): LiveData<List<Product>> {
+        return repository.getAllProducts()
+    }
 
     fun insertProduct(product: Product) = viewModelScope.launch {
         repository.insertProduct(product)

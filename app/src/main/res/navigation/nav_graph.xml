@@ -9,7 +9,11 @@
         android:id="@+id/productsFragment"
         android:name="br.com.lucasrodrigues.meupedido.ui.ProductsFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_products" />
+        tools:layout="@layout/fragment_products" >
+        <action
+            android:id="@+id/action_productsFragment_to_newProductFragment"
+            app:destination="@id/newProductFragment" />
+    </fragment>
     <fragment
         android:id="@+id/ordersFragment"
         android:name="br.com.lucasrodrigues.meupedido.ui.OrdersFragment"
@@ -20,5 +24,25 @@
         android:id="@+id/customersFragment"
         android:name="br.com.lucasrodrigues.meupedido.ui.CustomersFragment"
         android:label="fragment_customers"
-        tools:layout="@layout/fragment_customers" />
+        tools:layout="@layout/fragment_customers" >
+        <action
+            android:id="@+id/action_customersFragment_to_modalNewCustomerFragment"
+            app:destination="@id/modalNewCustomerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/modalNewCustomerFragment"
+        android:name="br.com.lucasrodrigues.meupedido.ui.NewCustomerFragment"
+        android:label="ModalNewCustomerFragment" >
+        <action
+            android:id="@+id/action_modalNewCustomerFragment_to_customersFragment"
+            app:destination="@id/customersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newProductFragment"
+        android:name="br.com.lucasrodrigues.meupedido.ui.NewProductFragment"
+        android:label="NewProductFragment" >
+        <action
+            android:id="@+id/action_newProductFragment_to_productsFragment"
+            app:destination="@id/productsFragment" />
+    </fragment>
 </navigation>

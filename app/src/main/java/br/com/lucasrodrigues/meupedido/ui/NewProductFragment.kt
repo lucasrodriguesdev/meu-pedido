@@ -4,24 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import br.com.lucasrodrigues.meupedido.R
 import br.com.lucasrodrigues.meupedido.data.models.Product
-import br.com.lucasrodrigues.meupedido.databinding.FragmentModalNewProductBinding
+import br.com.lucasrodrigues.meupedido.databinding.FragmentNewProductBinding
 import br.com.lucasrodrigues.meupedido.ui.viewmodels.ProductsViewModel
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ModalNewProductFragment : BottomSheetDialogFragment() {
+class NewProductFragment : Fragment() {
 
-    private lateinit var binding: FragmentModalNewProductBinding
+    private lateinit var binding: FragmentNewProductBinding
     private val viewModel: ProductsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentModalNewProductBinding.inflate(layoutInflater,container, false)
+        binding = FragmentNewProductBinding.inflate(layoutInflater,container, false)
 
         binding.btnSaveProduct.setOnClickListener {
             val product = Product(
@@ -29,14 +31,11 @@ class ModalNewProductFragment : BottomSheetDialogFragment() {
                 binding.tvProductDescription.editText?.text.toString()
             )
             viewModel.insertProduct(product)
-            dismiss()
+
+            findNavController().navigate(R.id.action_newProductFragment_to_productsFragment)
 
         }
         return binding.root
-    }
-
-    companion object {
-        const val TAG = "ModalBottomSheet"
     }
 
 }
