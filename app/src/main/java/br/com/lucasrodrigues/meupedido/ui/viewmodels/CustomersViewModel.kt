@@ -13,6 +13,8 @@ class CustomersViewModel @Inject constructor(
     private val repository: CustomerRepository
 ): ViewModel() {
 
+    var customers = repository.getAllCustomers()
+
     fun insertCustomer(customer: Customer) = viewModelScope.launch {
         repository.insertCustomer(customer)
     }

@@ -29,7 +29,6 @@ class ModalNewProductFragment : BottomSheetDialogFragment() {
                 binding.tvProductDescription.editText?.text.toString()
             )
             viewModel.insertProduct(product)
-
             dismiss()
 
         }
